@@ -1,24 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import { AgeContext } from "./AgeContext";
+import { NameContext } from "./NameContext";
+import Header from "./Header";
 
 function App() {
+  console.log(AgeContext, NameContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AgeContext.Provider value="30">
+      <NameContext.Provider value="거북이">
+        <Header />
+      </NameContext.Provider>
+    </AgeContext.Provider>
   );
 }
 

@@ -1,70 +1,15 @@
-# Getting Started with Create React App
+useContext란 ?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+보통 부모 컴포넌트에서 자식 컴포넌트로 props를 통해 데이터를 전달한다. 데이터를 이런식으로 전달하다가 컴포넌트들이 무수히 많으면, 루트 컴포넌트로부터 최하위 컴포넌트까지 순차적으로 데이터를 계속해서 전해주는 일이 발생한다.
 
-## Available Scripts
+하지만 Context를 사용한다면 전역적으로 데이터를 공유하기 때문에 루트에서 최하위 컴포넌트까지 데이터를 한 번에 전달할 수 있다.
 
-In the project directory, you can run:
+- context의 현재 값은 트리 안에서 Hook을 호출하는 컴포넌트에서 가장 가까이에 있는 <MyContext.Provider>의 value prop에 의해 결정된다.
 
-### `npm start`
+- useContext를 호출한 컴포넌트는 context 값이 변경되면 항상 리렌더링 된다. 즉, 상위 컴포넌트에서 React.memo 또는 shouldComponentUpdate를 사용하더라도 useContext를 사용하고 있는 컴포넌트 자체에서부터 다시 렌더링된다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Context를 사용하면 컴포넌트 재사용이 어렵다. Prop drilling을 피하기 위한 목적으로 Context를 사용한다면 Componet Composition(컴포넌트 합성)을 먼저 고려해야 한다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+useContext로 전달한 인자는 context 객체 그 자체이어야 함을 잊으면 안된다.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+useContext(MyContext)
